@@ -346,23 +346,6 @@ main {
   top: 1rem;
 }
 
-@media (max-width: 760px) {
-  .header {
-    padding: 1.2rem 6%;
-  }
-
-  .social-media {
-    display: none;
-  }
-
-  .navbar {
-    gap: 0.8rem;
-  }
-
-  .navbar a,
-  .navbar button {
-    font-size: 0.75rem;
-  }
 
 @media (max-width: 760px) {
   .header {
@@ -446,5 +429,1833 @@ main {
     bottom: 11%;
     left: 6%;
     max-width: 88%;
+  }
+}
+
+/* Scroll Down Hint */
+.scroll-down-hint {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.35rem;
+  color: #fff;
+  text-decoration: none;
+  z-index: 5;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 0.55rem 1.3rem;
+  border-radius: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  transition: all 250ms ease;
+}
+
+.scroll-down-hint:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.7);
+  transform: translateX(-50%) translateY(3px);
+}
+
+.scroll-chevron {
+  font-size: 1.1rem;
+  animation: bounceDown 1.8s infinite;
+}
+
+@keyframes bounceDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(5px);
+  }
+}
+
+/* Destination Guide Section */
+.destination-section {
+  background: #0b0f17;
+  color: #f0f4f8;
+  padding: 6.5rem 0 5rem;
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.section-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 5%;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 780px;
+  margin: 0 auto 3.5rem;
+}
+
+.section-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 2rem;
+  padding: 0.4rem 1.2rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #e2e8f0;
+  margin-bottom: 1.2rem;
+}
+
+.section-badge span:first-child {
+  color: #ff758f;
+  font-size: 0.95em;
+}
+
+.section-title {
+  font-size: clamp(2.2rem, 4.5vw, 3.4rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin: 0 0 1.2rem;
+  letter-spacing: -0.02em;
+}
+
+.section-title span {
+  background: linear-gradient(135deg, #ff758f 0%, #ffb703 50%, #90e0ef 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.section-subtitle {
+  font-size: 1.05rem;
+  line-height: 1.75;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Controls */
+.destination-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.season-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.season-tab {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 9999px;
+  color: #cbd5e1;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.55rem 1.15rem;
+  transition: all 200ms ease;
+}
+
+.season-tab:hover {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.season-tab .tab-kanji {
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.season-tab .tab-count {
+  font-size: 0.75rem;
+  padding: 0.15rem 0.45rem;
+  border-radius: 1rem;
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.season-tab.active {
+  background: #fff;
+  color: #0f172a;
+  border-color: #fff;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.35);
+}
+
+.season-tab.active .tab-count {
+  background: #0f172a;
+  color: #fff;
+}
+
+/* Season Specific Tab Accents */
+.season-tab.season-haru.active {
+  background: linear-gradient(135deg, #ff758f, #ffb3c1);
+  color: #4a0418;
+  border-color: #ff758f;
+  box-shadow: 0 0 20px rgba(255, 117, 143, 0.45);
+}
+.season-tab.season-natsu.active {
+  background: linear-gradient(135deg, #00b4d8, #90e0ef);
+  color: #032830;
+  border-color: #00b4d8;
+  box-shadow: 0 0 20px rgba(0, 180, 216, 0.45);
+}
+.season-tab.season-aki.active {
+  background: linear-gradient(135deg, #f77f00, #fcbf49);
+  color: #3b1900;
+  border-color: #f77f00;
+  box-shadow: 0 0 20px rgba(247, 127, 0, 0.45);
+}
+.season-tab.season-fuyu.active {
+  background: linear-gradient(135deg, #a0c4ff, #e2eafc);
+  color: #0a1931;
+  border-color: #a0c4ff;
+  box-shadow: 0 0 20px rgba(160, 196, 255, 0.45);
+}
+.season-tab.season-tsuyu.active {
+  background: linear-gradient(135deg, #7209b7, #b5179e);
+  color: #fff;
+  border-color: #7209b7;
+  box-shadow: 0 0 20px rgba(114, 9, 183, 0.45);
+}
+
+/* Search Bar */
+.destination-search {
+  max-width: 480px;
+  margin: 0 auto;
+  width: 100%;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.destination-search input {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+  padding: 0.75rem 2.8rem 0.75rem 2.6rem;
+  color: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+  transition: all 200ms ease;
+}
+
+.destination-search input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+.destination-search .search-icon {
+  position: absolute;
+  left: 0.95rem;
+  font-size: 0.95rem;
+  opacity: 0.6;
+  pointer-events: none;
+}
+
+.destination-search .clear-search {
+  position: absolute;
+  right: 0.75rem;
+  background: none;
+  border: 0;
+  color: #94a3b8;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+}
+
+/* Destinations Grid */
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+.dest-card {
+  background: #131926;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 1rem;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: transform 300ms ease, box-shadow 300ms ease, border-color 300ms ease;
+}
+
+.dest-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 20px 35px rgba(0, 0, 0, 0.45);
+}
+
+.dest-image-wrap {
+  height: 220px;
+  position: relative;
+  overflow: hidden;
+  background: #0f141f;
+}
+
+.dest-image-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 500ms ease;
+}
+
+.dest-card:hover .dest-image-wrap img {
+  transform: scale(1.06);
+}
+
+.dest-badge-row {
+  position: absolute;
+  top: 0.85rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 2;
+}
+
+.season-pill {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.dest-season-haru .season-pill {
+  background: rgba(255, 117, 143, 0.85);
+  color: #2b030e;
+  border-color: #ff758f;
+}
+.dest-season-natsu .season-pill {
+  background: rgba(0, 180, 216, 0.85);
+  color: #021a20;
+  border-color: #00b4d8;
+}
+.dest-season-aki .season-pill {
+  background: rgba(247, 127, 0, 0.85);
+  color: #2e1200;
+  border-color: #f77f00;
+}
+.dest-season-fuyu .season-pill {
+  background: rgba(160, 196, 255, 0.85);
+  color: #08162e;
+  border-color: #a0c4ff;
+}
+.dest-season-tsuyu .season-pill {
+  background: rgba(114, 9, 183, 0.85);
+  color: #fff;
+  border-color: #7209b7;
+}
+
+.prefecture-pill {
+  font-size: 0.75rem;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  color: #e2e8f0;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.dest-body {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.dest-title-group {
+  margin-bottom: 0.85rem;
+}
+
+.dest-kanji {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #94a3b8;
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.dest-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1.35;
+  margin: 0;
+}
+
+.dest-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.85rem;
+  padding: 0.75rem 0;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  margin-bottom: 0.95rem;
+  font-size: 0.82rem;
+  color: #cbd5e1;
+}
+
+.meta-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.dest-desc {
+  font-size: 0.88rem;
+  line-height: 1.65;
+  color: #94a3b8;
+  margin: 0 0 1rem;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+}
+
+.dest-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: auto;
+  margin-bottom: 1.2rem;
+}
+
+.dest-tag {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.06);
+  padding: 0.25rem 0.6rem;
+  border-radius: 0.35rem;
+}
+
+.dest-card-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+}
+
+.card-detail-btn {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.45rem;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 600;
+  padding: 0.65rem 1rem;
+  transition: all 200ms ease;
+}
+
+.card-detail-btn:hover {
+  background: #fff;
+  color: #0f172a;
+  border-color: #fff;
+}
+
+.card-detail-btn .arrow-icon {
+  font-size: 1.1rem;
+  transition: transform 200ms ease;
+}
+
+.card-detail-btn:hover .arrow-icon {
+  transform: translateX(4px);
+}
+
+/* Empty State */
+.no-destinations {
+  text-align: center;
+  padding: 4rem 1rem;
+  color: #94a3b8;
+}
+
+.no-destinations .empty-icon {
+  font-size: 3.5rem;
+  margin: 0 0 1rem;
+}
+
+.no-destinations h3 {
+  font-size: 1.4rem;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.reset-filter-btn {
+  margin-top: 1.5rem;
+}
+
+/* Destination Modal */
+.dest-modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  z-index: 200;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.dest-modal {
+  background: #111726;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+  color: #e2e8f0;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+}
+
+.modal-close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  color: #fff;
+  cursor: pointer;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1rem;
+  z-index: 10;
+  transition: background 200ms ease, transform 200ms ease;
+}
+
+.modal-close-button:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.08);
+}
+
+.dest-modal-hero {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+}
+
+.dest-modal-hero img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dest-modal-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(17, 23, 38, 0.95) 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1.8rem;
+}
+
+.modal-pills {
+  display: flex;
+  gap: 0.6rem;
+  margin-bottom: 0.6rem;
+}
+
+.modal-kanji {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #cbd5e1;
+  margin: 0 0 0.3rem;
+}
+
+.dest-modal-hero h2 {
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 800;
+  color: #fff;
+  margin: 0;
+  line-height: 1.25;
+}
+
+.dest-modal-body {
+  padding: 1.8rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
+}
+
+.modal-info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.info-box {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.65rem;
+  padding: 0.9rem 1.1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.info-box .info-icon {
+  font-size: 1.5rem;
+}
+
+.info-box h4 {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #94a3b8;
+  margin: 0 0 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+
+.info-box p {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+}
+
+.modal-section h3 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.65rem;
+}
+
+.modal-section p {
+  font-size: 0.95rem;
+  line-height: 1.75;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.highlights-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+}
+
+.highlights-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  font-size: 0.92rem;
+  color: #e2e8f0;
+}
+
+.check-bullet {
+  color: #48bb78;
+  font-weight: 800;
+}
+
+.modal-section-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.modal-card-box {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.65rem;
+  padding: 1.1rem;
+}
+
+.modal-card-box h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.5rem;
+}
+
+.modal-card-box p {
+  font-size: 0.86rem;
+  line-height: 1.6;
+  color: #cbd5e1;
+  margin: 0;
+}
+
+.dest-modal-footer {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1.4rem;
+}
+
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.btn-primary {
+  background: #fff;
+  color: #0f172a;
+  border: 1px solid #fff;
+  font-weight: 700;
+}
+
+.btn-primary:hover {
+  background: #e2e8f0;
+}
+
+.btn-explore-season {
+  background: #0f172a;
+  color: #fff;
+  border: 1px solid #0f172a;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+.btn-explore-season:hover {
+  background: #1e293b;
+  color: #fff;
+}
+
+/* Main Footer */
+.main-footer {
+  background: #070a10;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #94a3b8;
+  padding: 4rem 5% 2rem;
+  position: relative;
+  z-index: 10;
+}
+
+.footer-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  gap: 3rem;
+  padding-bottom: 3rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.footer-brand .logo {
+  font-size: 1.5rem;
+  display: inline-block;
+  margin-bottom: 1rem;
+}
+
+.footer-brand p {
+  font-size: 0.9rem;
+  line-height: 1.7;
+  max-width: 420px;
+  margin: 0;
+}
+
+.footer-links h4,
+.footer-contact h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 1.2rem;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footer-links a,
+.footer-contact a {
+  color: #94a3b8;
+  text-decoration: none;
+  font-size: 0.88rem;
+  transition: color 200ms ease;
+}
+
+.footer-links a:hover,
+.footer-contact a:hover {
+  color: #fff;
+}
+
+.footer-contact p {
+  font-size: 0.88rem;
+  margin: 0 0 0.65rem;
+}
+
+.footer-bottom {
+  max-width: 1280px;
+  margin: 2rem auto 0;
+  text-align: center;
+  font-size: 0.82rem;
+  color: #64748b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .footer-container {
+    grid-template-columns: 1fr 1fr;
+  }
+  .modal-section-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .destinations-grid {
+    grid-template-columns: 1fr;
+  }
+  .footer-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+  .modal-info-grid {
+    grid-template-columns: 1fr;
+  }
+  .dest-modal-hero {
+    height: 200px;
+  }
+  .dest-modal-body {
+    padding: 1.2rem;
+  }
+}
+
+/* ==========================================================================
+   Trip Planner & Booking Section
+   ========================================================================== */
+
+.booking-section {
+  background: #0d121c;
+  color: #f0f4f8;
+  padding: 6.5rem 0 5rem;
+  position: relative;
+  z-index: 10;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.booking-layout {
+  display: grid;
+  grid-template-columns: 1.8fr 1.2fr;
+  gap: 2.5rem;
+  align-items: start;
+}
+
+/* Booking Form Card */
+.booking-form-card {
+  background: #131926;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.2rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2.2rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+}
+
+.form-group-section {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  padding-bottom: 1.8rem;
+}
+
+.form-group-section:last-of-type {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.form-legend {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.step-number {
+  background: #fff;
+  color: #0f172a;
+  width: 1.8rem;
+  height: 1.8rem;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.85rem;
+  font-weight: 800;
+}
+
+/* Season Choice Grid */
+.season-selector-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+  gap: 0.65rem;
+}
+
+.season-choice-btn {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 0.85rem 0.5rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  font: inherit;
+  transition: all 200ms ease;
+}
+
+.season-choice-btn:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.3);
+  transform: translateY(-2px);
+}
+
+.season-choice-btn .choice-icon {
+  font-size: 1.3rem;
+}
+
+.season-choice-btn .choice-kanji {
+  font-size: 1rem;
+  font-weight: 700;
+}
+
+.season-choice-btn .choice-label {
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+
+.season-choice-btn.active {
+  background: #fff;
+  color: #0f172a;
+  border-color: #fff;
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.season-choice-btn.season-haru.active {
+  background: linear-gradient(135deg, #ff758f, #ffb3c1);
+  color: #4a0418;
+  border-color: #ff758f;
+}
+.season-choice-btn.season-natsu.active {
+  background: linear-gradient(135deg, #00b4d8, #90e0ef);
+  color: #032830;
+  border-color: #00b4d8;
+}
+.season-choice-btn.season-aki.active {
+  background: linear-gradient(135deg, #f77f00, #fcbf49);
+  color: #3b1900;
+  border-color: #f77f00;
+}
+.season-choice-btn.season-fuyu.active {
+  background: linear-gradient(135deg, #a0c4ff, #e2eafc);
+  color: #0a1931;
+  border-color: #a0c4ff;
+}
+.season-choice-btn.season-tsuyu.active {
+  background: linear-gradient(135deg, #7209b7, #b5179e);
+  color: #fff;
+  border-color: #7209b7;
+}
+
+/* Form Controls */
+.field-row,
+.field-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+}
+
+.form-grid-two {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+}
+
+.field-label {
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.form-select,
+.form-input {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 0.6rem;
+  color: #fff;
+  font: inherit;
+  font-size: 0.92rem;
+  padding: 0.75rem 1rem;
+  transition: all 200ms ease;
+  width: 100%;
+}
+
+.form-select option {
+  background: #111726;
+  color: #fff;
+}
+
+.form-select:focus,
+.form-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.09);
+  border-color: rgba(255, 255, 255, 0.5);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.1);
+}
+
+/* Duration Pills */
+.duration-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.duration-pill {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.5rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.6rem 0.85rem;
+  transition: all 200ms ease;
+}
+
+.duration-pill:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.duration-pill.active {
+  background: #fff;
+  color: #0f172a;
+  border-color: #fff;
+  box-shadow: 0 2px 10px rgba(255, 255, 255, 0.25);
+}
+
+/* Counter */
+.traveler-counter {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 0.6rem;
+  padding: 0.35rem 0.6rem;
+  width: fit-content;
+}
+
+.counter-btn {
+  background: rgba(255, 255, 255, 0.1);
+  border: 0;
+  border-radius: 0.4rem;
+  color: #fff;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 700;
+  width: 2.2rem;
+  height: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 180ms ease;
+}
+
+.counter-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.counter-value {
+  font-weight: 700;
+  font-size: 0.95rem;
+  min-width: 4.8rem;
+  text-align: center;
+  color: #fff;
+}
+
+/* Accommodation Grid */
+.accomm-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.85rem;
+}
+
+.accomm-card {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 0.75rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: all 200ms ease;
+}
+
+.accomm-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(255, 255, 255, 0.25);
+}
+
+.accomm-card.active {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #60a5fa;
+  box-shadow: 0 0 15px rgba(96, 165, 250, 0.3);
+}
+
+.accomm-card h4 {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0 0 0.35rem;
+}
+
+.accomm-card p {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: #94a3b8;
+  margin: 0;
+}
+
+/* Preferences Chips */
+.pref-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.pref-chip {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2rem;
+  color: #cbd5e1;
+  cursor: pointer;
+  font: inherit;
+  font-size: 0.84rem;
+  font-weight: 600;
+  padding: 0.45rem 0.95rem;
+  transition: all 200ms ease;
+}
+
+.pref-chip:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+
+.pref-chip.active {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+  color: #fff;
+}
+
+/* Submit Button */
+.btn-submit-booking {
+  background: linear-gradient(135deg, #ff758f 0%, #f77f00 100%);
+  border: 0;
+  border-radius: 0.75rem;
+  color: #fff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 1.05rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  transition: all 250ms ease;
+  box-shadow: 0 10px 25px rgba(247, 127, 0, 0.35);
+}
+
+.btn-submit-booking:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 30px rgba(247, 127, 0, 0.5);
+  filter: brightness(1.08);
+}
+
+.btn-submit-booking .btn-icon {
+  font-size: 1.3rem;
+}
+
+/* Summary Aside Card */
+.booking-summary-card {
+  background: #161e2e;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 1.2rem;
+  padding: 2.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: sticky;
+  top: 6rem;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4);
+}
+
+.summary-header .summary-kanji {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #ff758f;
+  letter-spacing: 0.12em;
+}
+
+.summary-header h3 {
+  font-size: 1.35rem;
+  font-weight: 800;
+  color: #fff;
+  margin: 0.25rem 0 0.35rem;
+}
+
+.summary-header p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.summary-dest-preview {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0.75rem;
+  padding: 0.75rem;
+  overflow: hidden;
+}
+
+.summary-dest-preview img {
+  width: 75px;
+  height: 75px;
+  border-radius: 0.5rem;
+  object-fit: cover;
+}
+
+.summary-dest-info h4 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #fff;
+  margin: 0.2rem 0;
+  line-height: 1.3;
+}
+
+.summary-dest-info p {
+  font-size: 0.78rem;
+  color: #94a3b8;
+  margin: 0;
+}
+
+.badge-season-tag {
+  font-size: 0.7rem;
+  font-weight: 700;
+  color: #ff758f;
+  text-transform: uppercase;
+}
+
+.cost-breakdown {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  font-size: 0.9rem;
+}
+
+.cost-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #cbd5e1;
+}
+
+.cost-row strong {
+  color: #fff;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.badge-included {
+  background: rgba(72, 187, 120, 0.15);
+  color: #48bb78;
+  font-weight: 700;
+  font-size: 0.78rem;
+  padding: 0.2rem 0.55rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(72, 187, 120, 0.3);
+}
+
+.summary-divider {
+  border: 0;
+  border-top: 1px dashed rgba(255, 255, 255, 0.15);
+  margin: 0.5rem 0;
+}
+
+.total-cost-block {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.total-label {
+  font-size: 0.84rem;
+  color: #94a3b8;
+}
+
+.total-price {
+  font-size: 1.85rem;
+  font-weight: 900;
+  color: #fff;
+  background: linear-gradient(135deg, #fff 0%, #ff758f 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.per-person-price {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.summary-perks {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 0.65rem;
+  padding: 0.85rem 1rem;
+  font-size: 0.8rem;
+  color: #cbd5e1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.summary-perks p {
+  margin: 0;
+}
+
+/* ==========================================================================
+   Digital Shinkansen Boarding Pass Ticket Modal
+   ========================================================================== */
+
+.shinkansen-ticket-modal {
+  background: #111726;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 1.2rem;
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.7);
+  max-width: 640px;
+  width: 100%;
+  padding: 2rem;
+  position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.shinkansen-ticket {
+  background: #fdfbf7;
+  color: #1a202c;
+  border-radius: 0.9rem;
+  padding: 2rem 2.2rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+  position: relative;
+  border: 2px solid #e2d9cc;
+}
+
+.ticket-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-bottom: 2px solid #1a202c;
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.ticket-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.ticket-logo-kanji {
+  background: #c53030;
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 900;
+  width: 2.4rem;
+  height: 2.4rem;
+  border-radius: 0.4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ticket-brand h4 {
+  font-size: 0.95rem;
+  font-weight: 800;
+  margin: 0 0 0.15rem;
+  letter-spacing: 0.04em;
+  color: #1a202c;
+}
+
+.ticket-brand p {
+  font-size: 0.75rem;
+  color: #718096;
+  margin: 0;
+}
+
+.ticket-booking-code {
+  text-align: right;
+}
+
+.ticket-booking-code .code-label {
+  display: block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #718096;
+  letter-spacing: 0.1em;
+}
+
+.ticket-booking-code .code-val {
+  font-family: monospace;
+  font-size: 1rem;
+  font-weight: 800;
+  color: #c53030;
+  letter-spacing: 0.05em;
+}
+
+.ticket-main-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.1rem;
+  margin-bottom: 1.3rem;
+}
+
+.ticket-field {
+  display: flex;
+  flex-direction: column;
+}
+
+.field-title {
+  font-size: 0.68rem;
+  font-weight: 700;
+  color: #718096;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.2rem;
+}
+
+.field-val {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #2d3748;
+}
+
+.field-val.highlight {
+  font-size: 1.1rem;
+  color: #1a202c;
+  font-weight: 900;
+}
+
+.ticket-tags {
+  margin-bottom: 1.5rem;
+}
+
+.ticket-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.35rem;
+}
+
+.ticket-pill {
+  background: #edf2f7;
+  border: 1px solid #cbd5e0;
+  border-radius: 0.35rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #4a5568;
+  padding: 0.2rem 0.6rem;
+}
+
+/* Perforated Line */
+.ticket-perforated-line {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 1.5rem -2.2rem;
+}
+
+.notch-left,
+.notch-right {
+  width: 1.2rem;
+  height: 1.2rem;
+  background: #111726;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.notch-left {
+  left: -0.6rem;
+}
+
+.notch-right {
+  right: -0.6rem;
+}
+
+.dash-line {
+  width: 100%;
+  height: 2px;
+  background-image: linear-gradient(to right, #cbd5e0 50%, rgba(255, 255, 255, 0) 0%);
+  background-position: bottom;
+  background-size: 10px 2px;
+  background-repeat: repeat-x;
+}
+
+/* Ticket Footer */
+.ticket-footer-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 0.5rem;
+}
+
+.fare-price {
+  font-size: 1.25rem;
+  font-weight: 900;
+  color: #c53030;
+  display: block;
+}
+
+.ticket-stamp {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 2px solid #c53030;
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  justify-content: center;
+  color: #c53030;
+  transform: rotate(-12deg);
+}
+
+.hanko-seal {
+  font-size: 0.85rem;
+  font-weight: 900;
+  line-height: 1;
+}
+
+.stamp-text {
+  font-size: 0.5rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+}
+
+.ticket-barcode-block {
+  text-align: right;
+}
+
+.barcode-text {
+  font-family: monospace;
+  font-size: 1.15rem;
+  letter-spacing: 0.15em;
+  color: #1a202c;
+  display: block;
+}
+
+.ticket-modal-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.8rem;
+}
+
+/* Booking Responsive */
+@media (max-width: 960px) {
+  .booking-layout {
+    grid-template-columns: 1fr;
+  }
+  .booking-summary-card {
+    position: static;
+  }
+}
+
+@media (max-width: 600px) {
+  .booking-form-card {
+    padding: 1.5rem 1.2rem;
+  }
+  .form-grid-two {
+    grid-template-columns: 1fr;
+  }
+  .shinkansen-ticket {
+    padding: 1.5rem;
+  }
+  .ticket-perforated-line {
+    margin: 1.2rem -1.5rem;
+  }
+  .ticket-main-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================================
+   JP Quest External Link & Promotion Banner
+   ========================================================================== */
+
+.navbar-ext-link {
+  background: rgba(255, 117, 143, 0.15) !important;
+  border: 1px solid rgba(255, 117, 143, 0.35) !important;
+  color: #ff758f !important;
+  padding: 0.35rem 0.85rem !important;
+  border-radius: 2rem !important;
+  font-weight: 700 !important;
+  transition: all 200ms ease !important;
+  text-decoration: none !important;
+}
+
+.navbar-ext-link:hover {
+  background: #ff758f !important;
+  color: #fff !important;
+  box-shadow: 0 0 15px rgba(255, 117, 143, 0.5);
+  transform: translateY(-1px);
+}
+
+.jpquest-banner-section {
+  background: #080c14;
+  padding: 5rem 0 4rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  position: relative;
+  z-index: 10;
+}
+
+.jpquest-banner-card {
+  background: radial-gradient(ellipse at 80% 20%, rgba(217, 95, 118, 0.18) 0%, transparent 60%),
+              linear-gradient(135deg, #181124 0%, #151020 50%, #0d1624 100%);
+  border: 1px solid rgba(255, 117, 143, 0.28);
+  border-radius: 1.5rem;
+  padding: 3.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 3rem;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 50px rgba(217, 95, 118, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.jpquest-banner-content {
+  max-width: 680px;
+}
+
+.jpquest-tag {
+  display: inline-block;
+  background: rgba(255, 117, 143, 0.15);
+  border: 1px solid rgba(255, 117, 143, 0.35);
+  color: #ff758f;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  padding: 0.4rem 1rem;
+  border-radius: 2rem;
+  margin-bottom: 1.2rem;
+}
+
+.jpquest-banner-content h2 {
+  font-size: clamp(1.9rem, 4vw, 2.7rem);
+  font-weight: 800;
+  color: #fff;
+  line-height: 1.25;
+  margin: 0 0 1rem;
+}
+
+.jpquest-banner-content h2 span {
+  background: linear-gradient(135deg, #ff758f 0%, #ffb703 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.jpquest-banner-content p {
+  font-size: 1.02rem;
+  line-height: 1.75;
+  color: #cbd5e1;
+  margin: 0 0 1.5rem;
+}
+
+.jpquest-features-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 2rem;
+}
+
+.jp-pill {
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 0.4rem 0.85rem;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+  letter-spacing: 0.02em;
+  transition: all 200ms ease;
+}
+
+.jp-pill:hover {
+  background: rgba(255, 117, 143, 0.15);
+  border-color: rgba(255, 117, 143, 0.4);
+  color: #ff758f;
+}
+
+.jpquest-banner-actions {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  flex-wrap: wrap;
+}
+
+.btn-jpquest {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: linear-gradient(135deg, #ff758f 0%, #d95f76 100%);
+  border: 0;
+  border-radius: 0.75rem;
+  color: #fff;
+  font: inherit;
+  font-size: 1.05rem;
+  font-weight: 700;
+  padding: 0.95rem 2rem;
+  text-decoration: none;
+  box-shadow: 0 10px 25px rgba(217, 95, 118, 0.4);
+  transition: all 250ms ease;
+}
+
+.btn-jpquest:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 32px rgba(217, 95, 118, 0.65);
+  filter: brightness(1.08);
+}
+
+.btn-jpquest .btn-arrow {
+  font-size: 1.25rem;
+  transition: transform 200ms ease;
+}
+
+.btn-jpquest:hover .btn-arrow {
+  transform: translate(2px, -2px);
+}
+
+.jpquest-domain-hint {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  font-family: monospace;
+  letter-spacing: 0.04em;
+}
+
+.jpquest-banner-visual {
+  flex-shrink: 0;
+}
+
+.jpquest-visual-badge {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(217, 95, 118, 0.15) 0%, rgba(20, 15, 30, 0.8) 70%);
+  border: 2px dashed rgba(255, 117, 143, 0.4);
+  border-radius: 50%;
+  box-shadow: 0 0 35px rgba(217, 95, 118, 0.25);
+  position: relative;
+  transition: transform 350ms ease;
+}
+
+.jpquest-visual-badge:hover {
+  transform: scale(1.05) rotate(3deg);
+}
+
+.badge-kanji-big {
+  font-size: 3rem;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
+  text-shadow: 0 0 20px rgba(255, 117, 143, 0.6);
+}
+
+.badge-quest-text {
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: 0.2em;
+  color: #ff758f;
+  margin-top: 0.2rem;
+}
+
+.badge-sub {
+  font-size: 0.65rem;
+  color: #94a3b8;
+  letter-spacing: 0.1em;
+}
+
+@media (max-width: 850px) {
+  .jpquest-banner-card {
+    padding: 2.2rem;
+    flex-direction: column;
+    text-align: center;
+  }
+  .jpquest-features-pills {
+    justify-content: center;
+  }
+  .jpquest-banner-actions {
+    justify-content: center;
+  }
+  .jpquest-banner-visual {
+    display: none;
   }
 }

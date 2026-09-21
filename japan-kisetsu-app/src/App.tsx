@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react'
+import { DestinationGuide } from './components/DestinationGuide'
+import { TripBooking } from './components/TripBooking'
 import './App.css'
 
 type Season = {
@@ -74,23 +76,12 @@ const seasons: Season[] = [
     description:
       'so named because the ripening of plums (梅ume) coincides with the arrival of tsuyu. These ripe plums are then processed into umeboshi (sour-salted plums) which often accompany Japanese bento (lunch boxes).',
   },
-  {
-    id: 'gakko',
-    image: '/images/Bahasa.jpg',
-    number: '06',
-    label: 'Japanese Learning',
-    romaji: 'Japan Gakko',
-    leftTitle: 'Japan',
-    rightTitle: 'gakko',
-    japanese: 'やさい・日本語',
-    description:
-      'Ingatlah bahwa kunci sukses dalam belajar bahasa Jepang adalah konsistensi dan ketekunan. Semoga berhasil!',
-  },
 ]
 
 function App() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isDetailsOpen, setIsDetailsOpen] = useState(false)
+  const [plannedDestination, setPlannedDestination] = useState<string>('')
   const activeSeason = seasons[activeIndex]
 
   const showPrevious = () => {
@@ -128,15 +119,47 @@ function App() {
         <div className="social-media" aria-label="Social media">
           <a href="#contact" aria-label="Facebook"><i className="bx bxl-facebook" /></a>
           <a href="#contact" aria-label="Twitter"><i className="bx bxl-twitter" /></a>
-          <a href="https://discord.gg/RztEwWMp" aria-label="Discord"><i className="bx bxl-discord" /></a>
+          <a href="https://github.com/Arterouss/Japan-Kisetsu" target="_blank" rel="noreferrer" aria-label="GitHub"><i className="bx bxl-github" /></a>
           <a href="#contact" aria-label="Instagram"><i className="bx bxl-instagram-alt" /></a>
         </div>
 
         <nav className="navbar" aria-label="Navigasi utama">
-          <a href="#destination">Destination</a>
-          <button type="button" onClick={() => setIsDetailsOpen(true)}>Bookinng</button>
+          <a
+            href="#destination-guide"
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector('#destination-guide')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+          >
+            Destination
+          </a>
+          <a
+            href="#booking"
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+          >
+            Booking
+          </a>
+          <a
+            href="https://jpquest.vercel.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="navbar-ext-link"
+          >
+            JP Quest ↗
+          </a>
           <button type="button" onClick={() => setIsDetailsOpen(true)}>Review</button>
-          <a id="contact" href="mailto:hello@japankisetsu.local">Contact</a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+          >
+            Contact
+          </a>
         </nav>
       </header>
 
@@ -178,6 +201,19 @@ function App() {
           )
         })}
 
+        <a
+          href="#destination-guide"
+          className="scroll-down-hint"
+          onClick={(e) => {
+            e.preventDefault()
+            document.querySelector('#destination-guide')?.scrollIntoView({ behavior: 'smooth' })
+          }}
+          aria-label="Scroll ke katalog destinasi"
+        >
+          <span className="scroll-text">Explore Destinations</span>
+          <span className="scroll-chevron">↓</span>
+        </a>
+
         <div className="navigation" aria-label="Kontrol slider">
           <button type="button" className="navigation-button previous" onClick={showPrevious} aria-label="Musim sebelumnya">
             ‹
@@ -190,6 +226,127 @@ function App() {
           {activeIndex + 1} / {seasons.length}
         </p>
       </section>
+
+      {/* Section Destination Guide */}
+      <DestinationGuide
+        activeSeasonId={activeSeason.id}
+        onPlanTrip={(destName) => {
+          setPlannedDestination(destName)
+          document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })
+        }}
+      />
+
+      {/* Section Trip Booking & Planner */}
+      <TripBooking initialDestination={plannedDestination} />
+
+      {/* Section JP Quest Promotion Banner */}
+      <section className="jpquest-banner-section" id="jpquest" aria-label="JP Quest Learning App">
+        <div className="section-container">
+          <div className="jpquest-banner-card">
+            <div className="jpquest-banner-content">
+              <span className="jpquest-tag">日本語学習 · OFFICIAL LEARNING APP</span>
+              <h2>Kuasai Bahasa Jepang Bersama <span>JP Quest</span></h2>
+              <p>
+                Platform belajar bahasa Jepang interaktif terlengkap. Pelajari Hiragana, Katakana, 2000+ Kanji, Kosakata, Tata Bahasa, dan persiapan simulasi JLPT N5 hingga N1 secara terstruktur dan seru!
+              </p>
+
+              <div className="jpquest-features-pills">
+                <span className="jp-pill">🌸 Hiragana & Katakana</span>
+                <span className="jp-pill">漢字 2000+ Kanji JLPT</span>
+                <span className="jp-pill">⚡ Spaced Repetition</span>
+                <span className="jp-pill">🎯 JLPT N5 — N1</span>
+                <span className="jp-pill">🔥 Streak & XP</span>
+              </div>
+
+              <div className="jpquest-banner-actions">
+                <a
+                  href="https://jpquest.vercel.app/"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="btn btn-jpquest"
+                >
+                  <span>Mulai Belajar di JP Quest</span>
+                  <span className="btn-arrow">↗</span>
+                </a>
+                <span className="jpquest-domain-hint">jpquest.vercel.app</span>
+              </div>
+            </div>
+
+            <div className="jpquest-banner-visual" aria-hidden="true">
+              <div className="jpquest-visual-badge">
+                <span className="badge-kanji-big">日</span>
+                <span className="badge-quest-text">QUEST</span>
+                <span className="badge-sub">日本語 · NIHON</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="main-footer" id="contact">
+        <div className="footer-container">
+          <div className="footer-brand">
+            <a className="logo" href="#destination">四季 <span>shiki · Japan Kisetsu</span></a>
+            <p>
+              Panduan interaktif keindahan empat musim, tradisi, dan destinasi wisata autentik di seluruh penjuru Jepang.
+            </p>
+          </div>
+          <div className="footer-links">
+            <h4>Navigasi</h4>
+            <a
+              href="#destination"
+              onClick={(e) => {
+                e.preventDefault()
+                window.scrollTo({ top: 0, behavior: 'smooth' })
+              }}
+            >
+              Beranda Slider
+            </a>
+            <a
+              href="#destination-guide"
+              onClick={(e) => {
+                e.preventDefault()
+                document.querySelector('#destination-guide')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              Katalog Destinasi
+            </a>
+            <a
+              href="#booking"
+              onClick={(e) => {
+                e.preventDefault()
+                document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              Trip Planner & Booking
+            </a>
+            <a href="https://jpquest.vercel.app/" target="_blank" rel="noreferrer">
+              JP Quest (Belajar Bahasa Jepang) ↗
+            </a>
+            <a href="https://github.com/Arterouss/Japan-Kisetsu" target="_blank" rel="noreferrer">
+              GitHub Repository
+            </a>
+          </div>
+          <div className="footer-contact">
+            <h4>Hubungi Kami</h4>
+            <p>
+              <a
+                href="https://github.com/Arterouss"
+                target="_blank"
+                rel="noreferrer"
+                style={{ display: 'inline-flex', alignItems: 'center', gap: '0.45rem' }}
+              >
+                <i className="bx bxl-github" style={{ fontSize: '1.25rem' }}></i>
+                GitHub: Arterouss
+              </a>
+            </p>
+          </div>
+        </div>
+        <div className="footer-bottom">
+          <p>© 2026 Japan Kisetsu (四季). All rights reserved.</p>
+        </div>
+      </footer>
 
       {isDetailsOpen && (
         <div className="dialog-backdrop" role="presentation" onMouseDown={() => setIsDetailsOpen(false)}>
@@ -204,6 +361,20 @@ function App() {
             <p className="eyebrow">{activeSeason.label}</p>
             <h2 id="details-title">{activeSeason.romaji} · {activeSeason.japanese}</h2>
             <p>{activeSeason.description}</p>
+            <div className="details-dialog-actions">
+              <button
+                type="button"
+                className="btn btn-explore-season"
+                onClick={() => {
+                  setIsDetailsOpen(false)
+                  setTimeout(() => {
+                    document.querySelector('#destination-guide')?.scrollIntoView({ behavior: 'smooth' })
+                  }, 120)
+                }}
+              >
+                Lihat Destinasi Wisata Musim Ini ↓
+              </button>
+            </div>
           </section>
         </div>
       )}
