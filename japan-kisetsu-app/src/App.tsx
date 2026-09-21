@@ -1,5 +1,7 @@
 import { useEffect, useState } from 'react'
 import { DestinationGuide } from './components/DestinationGuide'
+import { JapanRegionMap } from './components/JapanRegionMap'
+import { FestivalTimeline } from './components/FestivalTimeline'
 import { TripBooking } from './components/TripBooking'
 import { ReviewsSection } from './components/ReviewsSection'
 import { SideNavDots } from './components/SideNavDots'
@@ -136,6 +138,24 @@ function App() {
             Destination
           </a>
           <a
+            href="#region-map"
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector('#region-map')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+          >
+            Peta Region
+          </a>
+          <a
+            href="#festivals"
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector('#festivals')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+          >
+            Matsuri
+          </a>
+          <a
             href="#booking"
             onClick={(e) => {
               e.preventDefault()
@@ -246,6 +266,22 @@ function App() {
         }}
       />
 
+      {/* Section Japan Regional Map & Explorer */}
+      <JapanRegionMap
+        onPlanTrip={(regionDest) => {
+          setPlannedDestination(regionDest)
+          document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })
+        }}
+      />
+
+      {/* Section Seasonal Matsuri & Festival Timeline */}
+      <FestivalTimeline
+        onPlanTrip={(festivalPlan) => {
+          setPlannedDestination(festivalPlan)
+          document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })
+        }}
+      />
+
       {/* Section Trip Booking & Planner */}
       <TripBooking initialDestination={plannedDestination} />
 
@@ -324,6 +360,24 @@ function App() {
               }}
             >
               Katalog Destinasi
+            </a>
+            <a
+              href="#region-map"
+              onClick={(e) => {
+                e.preventDefault()
+                document.querySelector('#region-map')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              Peta 8 Wilayah Region
+            </a>
+            <a
+              href="#festivals"
+              onClick={(e) => {
+                e.preventDefault()
+                document.querySelector('#festivals')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              Festival Budaya (Matsuri)
             </a>
             <a
               href="#booking"

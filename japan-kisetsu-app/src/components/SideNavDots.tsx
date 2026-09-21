@@ -9,6 +9,8 @@ interface SectionItem {
 const sections: SectionItem[] = [
   { id: 'destination', label: 'Musim & Beranda', kanji: '四季' },
   { id: 'destination-guide', label: 'Katalog Destinasi', kanji: '名所' },
+  { id: 'region-map', label: 'Peta 8 Region', kanji: '地域' },
+  { id: 'festivals', label: 'Festival Matsuri', kanji: '祭' },
   { id: 'booking', label: 'Trip Planner & Booking', kanji: '予約' },
   { id: 'reviews', label: 'Cerita Wisatawan', kanji: '感想' },
   { id: 'jpquest', label: 'JP Quest Belajar', kanji: '学習' },
