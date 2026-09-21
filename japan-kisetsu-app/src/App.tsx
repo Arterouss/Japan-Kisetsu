@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import { DestinationGuide } from './components/DestinationGuide'
 import { TripBooking } from './components/TripBooking'
+import { ReviewsSection } from './components/ReviewsSection'
+import { SideNavDots } from './components/SideNavDots'
 import './App.css'
 
 type Season = {
@@ -150,7 +152,15 @@ function App() {
           >
             JP Quest ↗
           </a>
-          <button type="button" onClick={() => setIsDetailsOpen(true)}>Review</button>
+          <a
+            href="#reviews"
+            onClick={(e) => {
+              e.preventDefault()
+              document.querySelector('#reviews')?.scrollIntoView({ behavior: 'smooth' })
+            }}
+          >
+            Review
+          </a>
           <a
             href="#contact"
             onClick={(e) => {
@@ -239,6 +249,9 @@ function App() {
       {/* Section Trip Booking & Planner */}
       <TripBooking initialDestination={plannedDestination} />
 
+      {/* Section Traveler Reviews & Story Wall */}
+      <ReviewsSection />
+
       {/* Section JP Quest Promotion Banner */}
       <section className="jpquest-banner-section" id="jpquest" aria-label="JP Quest Learning App">
         <div className="section-container">
@@ -321,6 +334,15 @@ function App() {
             >
               Trip Planner & Booking
             </a>
+            <a
+              href="#reviews"
+              onClick={(e) => {
+                e.preventDefault()
+                document.querySelector('#reviews')?.scrollIntoView({ behavior: 'smooth' })
+              }}
+            >
+              Cerita & Ulasan Wisatawan
+            </a>
             <a href="https://jpquest.vercel.app/" target="_blank" rel="noreferrer">
               JP Quest (Belajar Bahasa Jepang) ↗
             </a>
@@ -378,6 +400,8 @@ function App() {
           </section>
         </div>
       )}
+      {/* Side Dots Quick Navigator */}
+      <SideNavDots />
     </main>
   )
 }
