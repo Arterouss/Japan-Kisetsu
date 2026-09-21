@@ -3,11 +3,13 @@ import { festivalsData, type Festival } from '../data/festivalsData'
 
 interface FestivalTimelineProps {
   onPlanTrip: (festivalPlan: string) => void
+  hideHeader?: boolean
+  isEmbedded?: boolean
 }
 
 type SeasonFilter = 'all' | 'haru' | 'natsu' | 'aki' | 'fuyu'
 
-export function FestivalTimeline({ onPlanTrip }: FestivalTimelineProps) {
+export function FestivalTimeline({ onPlanTrip, hideHeader = false, isEmbedded = false }: FestivalTimelineProps) {
   const [selectedSeason, setSelectedSeason] = useState<SeasonFilter>('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [activeModalFestival, setActiveModalFestival] = useState<Festival | null>(null)
@@ -35,17 +37,21 @@ export function FestivalTimeline({ onPlanTrip }: FestivalTimelineProps) {
     onPlanTrip(`${fest.romaji} (${fest.location})`)
   }
 
+  const ContentWrapper = isEmbedded ? 'div' : 'section'
+
   return (
-    <section className="festivals-section" id="festivals" aria-label="Kalender Festival Tradisional Jepang (Matsuri)">
+    <ContentWrapper className={`festivals-section ${isEmbedded ? 'embedded-mode' : ''}`} id="festivals" aria-label="Kalender Festival Tradisional Jepang (Matsuri)">
       <div className="section-container">
         {/* Section Header */}
-        <div className="section-header">
-          <span className="section-kanji">祭りと四季</span>
-          <h2>Kalender & Pesona <span>Matsuri Tradisional</span></h2>
-          <p className="section-subtitle">
-            Rasakan denyut kebudayaan Jepang yang berusia ratusan tahun: arak-arakan kuil portabel <em>mikoshi</em>, gemerlap kembang api musim panas <em>hanabi</em>, lentera malam, dan kehangatan jajanan stan <em>yatai</em>.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="section-header">
+            <span className="section-kanji">祭りと四季</span>
+            <h2>Kalender & Pesona <span>Matsuri Tradisional</span></h2>
+            <p className="section-subtitle">
+              Rasakan denyut kebudayaan Jepang yang berusia ratusan tahun: arak-arakan kuil portabel <em>mikoshi</em>, gemerlap kembang api musim panas <em>hanabi</em>, lentera malam, dan kehangatan jajanan stan <em>yatai</em>.
+            </p>
+          </div>
+        )}
 
         {/* Filter & Search Bar */}
         <div className="festivals-filter-row">
@@ -337,6 +343,6 @@ export function FestivalTimeline({ onPlanTrip }: FestivalTimelineProps) {
           </div>
         </div>
       )}
-    </section>
+    </ContentWrapper>
   )
 }

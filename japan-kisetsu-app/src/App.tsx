@@ -1,7 +1,5 @@
 import { useEffect, useState } from 'react'
-import { DestinationGuide } from './components/DestinationGuide'
-import { JapanRegionMap } from './components/JapanRegionMap'
-import { FestivalTimeline } from './components/FestivalTimeline'
+import { JapanExplorerHub, type ExplorerTab } from './components/JapanExplorerHub'
 import { TripBooking } from './components/TripBooking'
 import { ReviewsSection } from './components/ReviewsSection'
 import { SideNavDots } from './components/SideNavDots'
@@ -86,7 +84,13 @@ function App() {
   const [activeIndex, setActiveIndex] = useState(0)
   const [isDetailsOpen, setIsDetailsOpen] = useState(false)
   const [plannedDestination, setPlannedDestination] = useState<string>('')
+  const [activeExplorerTab, setActiveExplorerTab] = useState<ExplorerTab>('destinations')
   const activeSeason = seasons[activeIndex]
+
+  const navigateToExplorerTab = (tab: ExplorerTab) => {
+    setActiveExplorerTab(tab)
+    document.querySelector('#explore-hub')?.scrollIntoView({ behavior: 'smooth' })
+  }
 
   const showPrevious = () => {
     setActiveIndex((currentIndex) =>
@@ -129,28 +133,28 @@ function App() {
 
         <nav className="navbar" aria-label="Navigasi utama">
           <a
-            href="#destination-guide"
+            href="#explore-hub"
             onClick={(e) => {
               e.preventDefault()
-              document.querySelector('#destination-guide')?.scrollIntoView({ behavior: 'smooth' })
+              navigateToExplorerTab('destinations')
             }}
           >
             Destination
           </a>
           <a
-            href="#region-map"
+            href="#explore-hub"
             onClick={(e) => {
               e.preventDefault()
-              document.querySelector('#region-map')?.scrollIntoView({ behavior: 'smooth' })
+              navigateToExplorerTab('regions')
             }}
           >
             Peta Region
           </a>
           <a
-            href="#festivals"
+            href="#explore-hub"
             onClick={(e) => {
               e.preventDefault()
-              document.querySelector('#festivals')?.scrollIntoView({ behavior: 'smooth' })
+              navigateToExplorerTab('festivals')
             }}
           >
             Matsuri
@@ -232,13 +236,13 @@ function App() {
         })}
 
         <a
-          href="#destination-guide"
+          href="#explore-hub"
           className="scroll-down-hint"
           onClick={(e) => {
             e.preventDefault()
-            document.querySelector('#destination-guide')?.scrollIntoView({ behavior: 'smooth' })
+            navigateToExplorerTab('destinations')
           }}
-          aria-label="Scroll ke katalog destinasi"
+          aria-label="Scroll ke pusat eksplorasi"
         >
           <span className="scroll-text">Explore Destinations</span>
           <span className="scroll-chevron">↓</span>
@@ -257,27 +261,13 @@ function App() {
         </p>
       </section>
 
-      {/* Section Destination Guide */}
-      <DestinationGuide
+      {/* Section Japan Explorer Hub (Tabbed Architecture) */}
+      <JapanExplorerHub
         activeSeasonId={activeSeason.id}
+        activeTab={activeExplorerTab}
+        onTabChange={setActiveExplorerTab}
         onPlanTrip={(destName) => {
           setPlannedDestination(destName)
-          document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })
-        }}
-      />
-
-      {/* Section Japan Regional Map & Explorer */}
-      <JapanRegionMap
-        onPlanTrip={(regionDest) => {
-          setPlannedDestination(regionDest)
-          document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })
-        }}
-      />
-
-      {/* Section Seasonal Matsuri & Festival Timeline */}
-      <FestivalTimeline
-        onPlanTrip={(festivalPlan) => {
-          setPlannedDestination(festivalPlan)
           document.querySelector('#booking')?.scrollIntoView({ behavior: 'smooth' })
         }}
       />
@@ -353,28 +343,28 @@ function App() {
               Beranda Slider
             </a>
             <a
-              href="#destination-guide"
+              href="#explore-hub"
               onClick={(e) => {
                 e.preventDefault()
-                document.querySelector('#destination-guide')?.scrollIntoView({ behavior: 'smooth' })
+                navigateToExplorerTab('destinations')
               }}
             >
               Katalog Destinasi
             </a>
             <a
-              href="#region-map"
+              href="#explore-hub"
               onClick={(e) => {
                 e.preventDefault()
-                document.querySelector('#region-map')?.scrollIntoView({ behavior: 'smooth' })
+                navigateToExplorerTab('regions')
               }}
             >
               Peta 8 Wilayah Region
             </a>
             <a
-              href="#festivals"
+              href="#explore-hub"
               onClick={(e) => {
                 e.preventDefault()
-                document.querySelector('#festivals')?.scrollIntoView({ behavior: 'smooth' })
+                navigateToExplorerTab('festivals')
               }}
             >
               Festival Budaya (Matsuri)
@@ -444,7 +434,7 @@ function App() {
                 onClick={() => {
                   setIsDetailsOpen(false)
                   setTimeout(() => {
-                    document.querySelector('#destination-guide')?.scrollIntoView({ behavior: 'smooth' })
+                    navigateToExplorerTab('destinations')
                   }, 120)
                 }}
               >

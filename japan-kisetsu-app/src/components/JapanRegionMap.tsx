@@ -3,9 +3,11 @@ import { japanRegions, type JapanRegion } from '../data/regionsData'
 
 interface JapanRegionMapProps {
   onPlanTrip: (regionDestination: string) => void
+  hideHeader?: boolean
+  isEmbedded?: boolean
 }
 
-export function JapanRegionMap({ onPlanTrip }: JapanRegionMapProps) {
+export function JapanRegionMap({ onPlanTrip, hideHeader = false, isEmbedded = false }: JapanRegionMapProps) {
   const [selectedRegionId, setSelectedRegionId] = useState<string>('kansai')
   const [hoveredRegionId, setHoveredRegionId] = useState<string | null>(null)
 
@@ -20,17 +22,21 @@ export function JapanRegionMap({ onPlanTrip }: JapanRegionMapProps) {
     onPlanTrip(`${activeRegion.name} (${activeRegion.hubCity})`)
   }
 
+  const ContentWrapper = isEmbedded ? 'div' : 'section'
+
   return (
-    <section className="region-map-section" id="region-map" aria-label="Peta Interaktif Wilayah Jepang">
+    <ContentWrapper className={`region-map-section ${isEmbedded ? 'embedded-mode' : ''}`} id="region-map" aria-label="Peta Interaktif Wilayah Jepang">
       <div className="section-container">
         {/* Section Header */}
-        <div className="section-header">
-          <span className="section-kanji">地域探訪</span>
-          <h2>Jelajahi 8 Wilayah Tradisional <span>Jepang</span></h2>
-          <p className="section-subtitle">
-            Dari negeri salju Hokkaido di utara hingga pesisir pulau hangat Kyushu & Okinawa. Klik wilayah di peta atau pilih tombol untuk melihat iklim, kuliner khas (<em>meibutsu</em>), dan festival legendaris.
-          </p>
-        </div>
+        {!hideHeader && (
+          <div className="section-header">
+            <span className="section-kanji">地域探訪</span>
+            <h2>Jelajahi 8 Wilayah Tradisional <span>Jepang</span></h2>
+            <p className="section-subtitle">
+              Dari negeri salju Hokkaido di utara hingga pesisir pulau hangat Kyushu & Okinawa. Klik wilayah di peta atau pilih tombol untuk melihat iklim, kuliner khas (<em>meibutsu</em>), dan festival legendaris.
+            </p>
+          </div>
+        )}
 
         {/* Region Selector Pills */}
         <div className="region-selector-bar" role="tablist" aria-label="Pilihan wilayah">
@@ -387,6 +393,6 @@ export function JapanRegionMap({ onPlanTrip }: JapanRegionMapProps) {
           </article>
         </div>
       </div>
-    </section>
+    </ContentWrapper>
   )
 }

@@ -275,15 +275,20 @@ export function ReviewsSection() {
             </button>
 
             <div className="review-dialog-header">
-              <span className="dialog-eyebrow">SHARE YOUR JOURNEY</span>
-              <h2 id="write-review-title">Bagikan Cerita Liburan Jepang Anda</h2>
-              <p>Ceritakan momen tak terlupakan Anda agar menginspirasi wisatawan lainnya.</p>
+              <div className="dialog-badge">
+                <span className="badge-kanji">旅の思い出</span>
+                <span className="dialog-eyebrow">SHARE YOUR JOURNEY</span>
+              </div>
+              <h2 id="write-review-title">Bagikan Cerita Liburan <span>Jepang Anda</span></h2>
+              <p>Ceritakan momen magis, kuliner favorit, atau tips autentik Anda untuk menginspirasi wisatawan lainnya.</p>
             </div>
 
             <form onSubmit={handleSubmitReview} className="review-form">
               <div className="form-row-2">
                 <div className="form-field">
-                  <label htmlFor="rev-name">Nama Lengkap *</label>
+                  <label htmlFor="rev-name">
+                    <i className="bx bx-user" /> Nama Lengkap <span className="req-star">*</span>
+                  </label>
                   <input
                     id="rev-name"
                     type="text"
@@ -294,10 +299,13 @@ export function ReviewsSection() {
                   />
                 </div>
                 <div className="form-field">
-                  <label htmlFor="rev-city">Kota / Asal *</label>
+                  <label htmlFor="rev-city">
+                    <i className="bx bx-map-pin" /> Kota / Asal <span className="req-star">*</span>
+                  </label>
                   <input
                     id="rev-city"
                     type="text"
+                    required
                     placeholder="Contoh: Jakarta / Bandung"
                     value={formCity}
                     onChange={(e) => setFormCity(e.target.value)}
@@ -307,7 +315,9 @@ export function ReviewsSection() {
 
               <div className="form-row-2">
                 <div className="form-field">
-                  <label htmlFor="rev-season">Musim Kunjungan *</label>
+                  <label htmlFor="rev-season">
+                    <i className="bx bx-calendar" /> Musim Kunjungan <span className="req-star">*</span>
+                  </label>
                   <select
                     id="rev-season"
                     value={formSeason}
@@ -321,10 +331,13 @@ export function ReviewsSection() {
                   </select>
                 </div>
                 <div className="form-field">
-                  <label htmlFor="rev-dest">Destinasi / Spot Kunjungan *</label>
+                  <label htmlFor="rev-dest">
+                    <i className="bx bx-compass" /> Destinasi / Spot Kunjungan <span className="req-star">*</span>
+                  </label>
                   <input
                     id="rev-dest"
                     type="text"
+                    required
                     placeholder="Contoh: Kyoto · Arashiyama & Gion"
                     value={formDestination}
                     onChange={(e) => setFormDestination(e.target.value)}
@@ -333,7 +346,9 @@ export function ReviewsSection() {
               </div>
 
               <div className="form-field">
-                <label>Rating Pengalaman *</label>
+                <label>
+                  <i className="bx bx-star" /> Rating Pengalaman <span className="req-star">*</span>
+                </label>
                 <div className="rating-selector">
                   {[1, 2, 3, 4, 5].map((star) => (
                     <button
@@ -341,21 +356,24 @@ export function ReviewsSection() {
                       type="button"
                       className={`star-pick-btn ${star <= formRating ? 'active' : ''}`}
                       onClick={() => setFormRating(star)}
+                      aria-label={`Beri rating ${star} bintang`}
                     >
                       ★
                     </button>
                   ))}
                   <span className="rating-text-hint">
-                    {formRating === 5 && 'Sempurna! Luar biasa memukau'}
-                    {formRating === 4 && 'Sangat memuaskan'}
-                    {formRating === 3 && 'Cukup bagus'}
-                    {formRating < 3 && 'Pengalaman standar'}
+                    {formRating === 5 && '🌟 Sempurna! Luar biasa memukau'}
+                    {formRating === 4 && '✨ Sangat memuaskan'}
+                    {formRating === 3 && '👍 Cukup bagus'}
+                    {formRating < 3 && '👌 Pengalaman standar'}
                   </span>
                 </div>
               </div>
 
               <div className="form-field">
-                <label htmlFor="rev-title">Judul Pengalaman *</label>
+                <label htmlFor="rev-title">
+                  <i className="bx bx-bookmark" /> Judul Cerita <span className="req-star">*</span>
+                </label>
                 <input
                   id="rev-title"
                   type="text"
@@ -367,12 +385,14 @@ export function ReviewsSection() {
               </div>
 
               <div className="form-field">
-                <label htmlFor="rev-story">Cerita Pengalaman & Tips Perjalanan *</label>
+                <label htmlFor="rev-story">
+                  <i className="bx bx-message-detail" /> Cerita Pengalaman & Tips Perjalanan <span className="req-star">*</span>
+                </label>
                 <textarea
                   id="rev-story"
                   rows={4}
                   required
-                  placeholder="Ceritakan keindahan suasana, kuliner lokal, atau tips menarik untuk para pelancong berikutnya..."
+                  placeholder="Ceritakan keindahan suasana, kuliner lokal yang dicicipi, atau tips menarik untuk para pelancong berikutnya..."
                   value={formStory}
                   onChange={(e) => setFormStory(e.target.value)}
                 />

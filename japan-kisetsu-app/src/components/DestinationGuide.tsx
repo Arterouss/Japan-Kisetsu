@@ -22,12 +22,22 @@ const filterOptions: FilterOption[] = [
 interface DestinationGuideProps {
   activeSeasonId?: string
   onPlanTrip?: (destinationName: string) => void
+  hideHeader?: boolean
+  isEmbedded?: boolean
 }
 
-export function DestinationGuide({ onPlanTrip }: DestinationGuideProps) {
+export function DestinationGuide({ activeSeasonId, onPlanTrip, hideHeader = false, isEmbedded = false }: DestinationGuideProps) {
   const [selectedSeason, setSelectedSeason] = useState<SeasonFilter>('all')
   const [searchQuery, setSearchQuery] = useState('')
   const [activeModalDest, setActiveModalDest] = useState<Destination | null>(null)
+
+  const [prevSeasonId, setPrevSeasonId] = useState(activeSeasonId)
+  if (activeSeasonId !== prevSeasonId) {
+    setPrevSeasonId(activeSeasonId)
+    if (activeSeasonId && ['haru', 'natsu', 'aki', 'fuyu', 'tsuyu'].includes(activeSeasonId)) {
+      setSelectedSeason(activeSeasonId as SeasonFilter)
+    }
+  }
 
   const filteredDestinations = useMemo(() => {
     return destinations.filter((item) => {
@@ -43,23 +53,27 @@ export function DestinationGuide({ onPlanTrip }: DestinationGuideProps) {
     })
   }, [selectedSeason, searchQuery])
 
+  const ContentWrapper = isEmbedded ? 'div' : 'section'
+
   return (
-    <section className="destination-section" id="destination-guide" aria-label="Panduan Destinasi Musim Jepang">
+    <ContentWrapper className={`destination-section ${isEmbedded ? 'embedded-mode' : ''}`} id="destination-guide" aria-label="Panduan Destinasi Musim Jepang">
       <div className="section-container">
         {/* Section Header */}
-        <header className="section-header">
-          <div className="section-badge">
-            <span>四季の観光地</span>
-            <span>SEASONAL DESTINATION GUIDE</span>
-          </div>
-          <h2 className="section-title">
-            Jelajahi Pesona Jepang di <span>Setiap Musim</span>
-          </h2>
-          <p className="section-subtitle">
-            Dari mekarnya sakura di Kyoto, festival kembang api Tokyo, pesona daun merah Arashiyama,
-            hingga desa salju magis Shirakawa-go. Temukan waktu terbaik dan panduan rute perjalanan impian Anda.
-          </p>
-        </header>
+        {!hideHeader && (
+          <header className="section-header">
+            <div className="section-badge">
+              <span>四季の観光地</span>
+              <span>SEASONAL DESTINATION GUIDE</span>
+            </div>
+            <h2 className="section-title">
+              Jelajahi Pesona Jepang di <span>Setiap Musim</span>
+            </h2>
+            <p className="section-subtitle">
+              Dari mekarnya sakura di Kyoto, festival kembang api Tokyo, pesona daun merah Arashiyama,
+              hingga desa salju magis Shirakawa-go. Temukan waktu terbaik dan panduan rute perjalanan impian Anda.
+            </p>
+          </header>
+        )}
 
         {/* Filter Controls & Search */}
         <div className="destination-controls">
@@ -317,6 +331,6 @@ export function DestinationGuide({ onPlanTrip }: DestinationGuideProps) {
           </div>
         </div>
       )}
-    </section>
+    </ContentWrapper>
   )
 }
